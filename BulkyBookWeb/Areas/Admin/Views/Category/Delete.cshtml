@@ -1,0 +1,86 @@
+﻿
+@model Category
+
+<form method="post" asp-action="DeletePOST">
+    <input asp-for="Id" hidden />
+    <div class="border p-3 mt-3">
+        <div class="row pt-2">
+            <h2 class="text-primary">Delete Category</h2>
+            <hr/>
+        </div>
+       <div id="alert"></div>
+        <div class="mb-3">
+            <div class="name"  style="display: flex;">
+            <div class="col-2">
+            <label asp-for="Name"></label>
+            </div>
+            <div class="col-8">
+            <input disabled asp-for="Name" class="form-control"/>
+            </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <div class="displayorder"  style="display: flex;">
+            <div class="col-2">
+            <label asp-for="DisplayOrder"></label>
+            </div>
+            <div class="col-8">
+            <input disabled asp-for="DisplayOrder" class="form-control"/>
+            </div>
+            </div>
+        </div>
+        </div>
+        <button type="submit" onclick="return ValidateInput()" class="btn btn-danger" style="width:150px">Delete</button>
+        <a asp-controller="Category"  asp-action="Index" class="btn btn-secondary" style="width:150px">Back to List</a>
+
+    </div>
+
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial"/>
+    }
+}
+    @*<script>
+     function ValidateInput() {
+         //if(document.getElementId("alert".valueOf!="")
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+         confirmButton: 'btn btn-success',
+         cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+           })
+
+       swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+        }).then((result) => {
+        if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire(
+                'Cancelled',
+                'Your imaginary file is safe :)',
+                'error'
+            )
+        }
+            return false;
+    });
+    return true;
+}
+    </script>
+}*@
